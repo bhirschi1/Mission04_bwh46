@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mission04_bwh46
+namespace Mission05_bwh46
 {
     public class Startup
     {
@@ -16,13 +16,31 @@ namespace Mission04_bwh46
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+                //.AddRazorRuntimeCompilation(); Trying to fix an error I had
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            app.UseDefaultFiles();
+        {   
+            if (env.IsEnvironment("Development"))
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            
             app.UseStaticFiles();
+
+            app.UseRouting();
+
+            //Add to make sure that Index is called as the default of the website
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Grades}/{action=Index}/{id?}"
+                    );
+            });
+            
         }
     }
 }

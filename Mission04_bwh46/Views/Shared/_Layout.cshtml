@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<!--This page is inherited by the other views.-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--The title of the page is changed via razor code-->
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" type="image/x-icon" href="~/img/04favicon.jpg" />
+    <!--including the bootstrap css as well as my own css to change the header tag-->
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/benStyles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--The header tag is also changed via razor code-->
+    <header>@ViewData["Text"]</header>
+<nav>
+    <!--navigation to the two pages to be displayed on every page of the website-->
+    <a asp-controller="Grades" asp-action="Index">Home</a>
+    <a asp-controller="Grades" asp-action="Grader">Grades</a>
+</nav>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/jquery-3.6.3.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
