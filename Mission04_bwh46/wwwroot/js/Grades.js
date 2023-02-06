@@ -15,7 +15,7 @@
 
     // initialize finalGrade, which will be a letter grade depending on totalGrade from above
     //These letter grades follow the syllabus
-
+    //change
     finalGrade = "";
     if (totalGrade >= 94) {
         finalGrade = "A"
